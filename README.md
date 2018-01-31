@@ -32,7 +32,6 @@ public class MyApplication extends Application {
 ```java
 ImageLoader.with(context).url(url).into(imageView);
 ```
-```
 加载本地资源图片
 ```java
 ImageLoader.with(context).resourceId(resId).into(imageView);
