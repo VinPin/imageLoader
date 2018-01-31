@@ -55,11 +55,12 @@ ImageLoader.with(context).drawable(drawable).into(imageView);
 
 二. 占位符和错误符
 ```java
+// 占位符
 ImageLoader.with(context)
   .url(url)
   .placeholder(R.drawable.placeholder)
   .into(imageView);
-  
+// 错误符
 ImageLoader.with(context)
   .url(url)
   .error(R.drawable.error)
@@ -108,7 +109,7 @@ ImageLoader.with(context)
   .into(imageView);
 ```
 
-# 添加混淆配置
+# 混淆配置
 由于目前只基于Glide4.5.0的封装，需要添加Glide的混淆配置
 ```java
 -keep public class * implements com.bumptech.glide.module.GlideModule
