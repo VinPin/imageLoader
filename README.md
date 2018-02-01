@@ -5,7 +5,7 @@ Android 网络图片加载封装库
 compile 'com.vinpin:imageloader:1.0.0'
 ```
 # 开始使用
-采用策略设计模式，但目前只实现了基于Glide4.5.0的策略，其他的等待扩展。
+采用策略设计模式，目前只实现了基于Glide4.5.0的策略，其他的等待扩展。
 
 如果场景需要，在Application中
 ```java
@@ -14,21 +14,21 @@ public class MyApplication extends Application {
     @Override
     public void onTrimMemory(int level) {
         super.onTrimMemory(level);
-        // 如果需要处理的话
+        // 如果场景需要
         ImageLoader.onLowMemory(this);
     }
 
     @Override
     public void onLowMemory() {
         super.onLowMemory();
-        // 如果需要处理的话
+        // 如果场景需要
         ImageLoader.onLowMemory(this);
     }
     ...
 }
 ```
 
-一. 基础使用结构，链式调用
+一. 基础使用结构，保留原汁原味的链式调用，使用起来就是爽
 ```java
 ImageLoader.with(context).url(url).into(imageView);
 ```
@@ -68,6 +68,7 @@ ImageLoader.with(context)
 ```
 
 三. 进阶扩展
+
 设置缩略图缩放倍数
 ```java
 ImageLoader.with(context)
