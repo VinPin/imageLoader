@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         imageView = findViewById(R.id.imageView);
         findViewById(R.id.txt_url).setOnClickListener(this);
         findViewById(R.id.txt_resid).setOnClickListener(this);
+        findViewById(R.id.txt_circle).setOnClickListener(this);
         findViewById(R.id.txt_reset).setOnClickListener(this);
     }
 
@@ -49,6 +50,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.txt_resid:
                 ImageLoader.with(this).resourceId(R.drawable.img_tmp).into(imageView);
+                break;
+            case R.id.txt_circle:
+                ImageLoader.with(this).url(urls[0]).circleCrop().into(imageView);
                 break;
             case R.id.txt_reset:
                 ImageLoader.clearMemoryCache(this);

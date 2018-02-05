@@ -13,7 +13,7 @@ import com.vinpin.imageloader.ImageLoader;
 import java.io.File;
 
 /**
- * 图片参数选项类
+ * 图片请求选项类
  *
  * @author vinpin
  *         create at 2018/01/29 16:19
@@ -32,10 +32,21 @@ public class ImageLoaderOptions {
     private float thumbSizeMultiplier;
     private boolean asBitmap;
 
-    private int placeholderResId;
-    private int errorResId;
+    @Nullable
+    private Drawable placeholderDrawable;
+    private int placeholderId;
+    @Nullable
+    private Drawable errorPlaceholder;
+    private int errorId;
+    @Nullable
+    private Drawable fallbackDrawable;
+    private int fallbackId;
     private int overrideWidth;
     private int overrideHeight;
+    private boolean centerCrop;
+    private boolean fitCenter;
+    private boolean circleCrop;
+    private boolean centerInside;
     private boolean skipMemoryCache;
     private int diskCacheType;
 
@@ -51,10 +62,18 @@ public class ImageLoaderOptions {
         this.thumbSizeMultiplier = builder.thumbSizeMultiplier;
         this.asBitmap = builder.asBitmap;
 
-        this.placeholderResId = builder.placeholderResId;
-        this.errorResId = builder.errorResId;
+        this.placeholderDrawable = builder.placeholderDrawable;
+        this.placeholderId = builder.placeholderId;
+        this.errorPlaceholder = builder.errorPlaceholder;
+        this.errorId = builder.errorId;
+        this.fallbackDrawable = builder.fallbackDrawable;
+        this.fallbackId = builder.fallbackId;
         this.overrideWidth = builder.overrideWidth;
         this.overrideHeight = builder.overrideHeight;
+        this.centerCrop = builder.centerCrop;
+        this.fitCenter = builder.fitCenter;
+        this.circleCrop = builder.circleCrop;
+        this.centerInside = builder.centerInside;
         this.skipMemoryCache = builder.skipMemoryCache;
         this.diskCacheType = builder.diskCacheType;
 
@@ -93,12 +112,31 @@ public class ImageLoaderOptions {
         return resourceId;
     }
 
-    public int getPlaceholderResId() {
-        return placeholderResId;
+    @Nullable
+    public Drawable getPlaceholderDrawable() {
+        return placeholderDrawable;
     }
 
-    public int getErrorResId() {
-        return errorResId;
+    public int getPlaceholderId() {
+        return placeholderId;
+    }
+
+    @Nullable
+    public Drawable getErrorPlaceholder() {
+        return errorPlaceholder;
+    }
+
+    public int getErrorId() {
+        return errorId;
+    }
+
+    @Nullable
+    public Drawable getFallbackDrawable() {
+        return fallbackDrawable;
+    }
+
+    public int getFallbackId() {
+        return fallbackId;
     }
 
     public int getOverrideWidth() {
@@ -107,6 +145,22 @@ public class ImageLoaderOptions {
 
     public int getOverrideHeight() {
         return overrideHeight;
+    }
+
+    public boolean isCenterCrop() {
+        return centerCrop;
+    }
+
+    public boolean isFitCenter() {
+        return fitCenter;
+    }
+
+    public boolean isCircleCrop() {
+        return circleCrop;
+    }
+
+    public boolean isCenterInside() {
+        return centerInside;
     }
 
     public boolean isSkipMemoryCache() {
@@ -126,7 +180,7 @@ public class ImageLoaderOptions {
     }
 
     /**
-     * 静态构建者模式
+     * 建造者模式
      */
     public static class OptionBuilder {
 
@@ -140,10 +194,21 @@ public class ImageLoaderOptions {
         private float thumbSizeMultiplier;
         private boolean asBitmap = false;
 
-        private int placeholderResId;
-        private int errorResId;
+        @Nullable
+        private Drawable placeholderDrawable;
+        private int placeholderId;
+        @Nullable
+        private Drawable errorPlaceholder;
+        private int errorId;
+        @Nullable
+        private Drawable fallbackDrawable;
+        private int fallbackId;
         private int overrideWidth;
         private int overrideHeight;
+        private boolean centerCrop;
+        private boolean fitCenter;
+        private boolean circleCrop;
+        private boolean centerInside;
         private boolean skipMemoryCache = false;
         private int diskCacheType = DiskCacheType.AUTOMATIC;
 
@@ -232,22 +297,66 @@ public class ImageLoaderOptions {
         /**
          * 设置占位符
          *
-         * @param placeholderResId 占位符图片的资源id
+         * @param drawable The drawable to display as a placeholder.
          * @return This option builder.
          */
-        public OptionBuilder placeholder(int placeholderResId) {
-            this.placeholderResId = placeholderResId;
+        public OptionBuilder placeholder(@Nullable Drawable drawable) {
+            this.placeholderDrawable = drawable;
+            return this;
+        }
+
+        /**
+         * 设置占位符
+         *
+         * @param resourceId The id of the resource to use as a placeholder
+         * @return This option builder.
+         */
+        public OptionBuilder placeholder(@DrawableRes int resourceId) {
+            this.placeholderId = resourceId;
             return this;
         }
 
         /**
          * 设置错误符
          *
-         * @param errorResId 错误符图片的资源id
+         * @param drawable The drawable to display.
          * @return This option builder.
          */
-        public OptionBuilder error(int errorResId) {
-            this.errorResId = errorResId;
+        public OptionBuilder error(@Nullable Drawable drawable) {
+            this.errorPlaceholder = drawable;
+            return this;
+        }
+
+        /**
+         * 设置错误符
+         *
+         * @param resourceId The id of the resource to use as a placeholder.
+         * @return This option builder.
+         */
+        public OptionBuilder error(@DrawableRes int resourceId) {
+            this.errorId = resourceId;
+            return this;
+        }
+
+        /**
+         * 设置后备回调符
+         *
+         * @param drawable The drawable to display as a placeholder.
+         * @return This option builder.
+         */
+        public OptionBuilder fallback(@Nullable Drawable drawable) {
+            this.fallbackDrawable = drawable;
+            return this;
+        }
+
+        /**
+         * 设置后备回调符
+         *
+         * @param resourceId The id of the resource to use as a fallback.
+         * @return This option builder.
+         */
+        public OptionBuilder fallback(@DrawableRes int resourceId) {
+            this.fallbackId = resourceId;
             return this;
         }
 
@@ -261,6 +370,46 @@ public class ImageLoaderOptions {
         public OptionBuilder override(int width, int height) {
             this.overrideWidth = width;
             this.overrideHeight = height;
+            return this;
+        }
+
+        /**
+         * 设置图片ScaleType
+         *
+         * @return This option builder.
+         */
+        public OptionBuilder centerCrop() {
+            this.centerCrop = true;
+            return this;
+        }
+
+        /**
+         * 设置图片ScaleType
+         *
+         * @return This option builder.
+         */
+        public OptionBuilder fitCenter() {
+            this.fitCenter = true;
+            return this;
+        }
+
+        /**
+         * 设置图片ScaleType
+         *
+         * @return This option builder.
+         */
+        public OptionBuilder circleCrop() {
+            this.circleCrop = true;
+            return this;
+        }
+
+        /**
+         * 设置图片ScaleType
+         *
+         * @return This option builder.
+         */
+        public OptionBuilder centerInside() {
+            this.centerInside = true;
             return this;
         }
 

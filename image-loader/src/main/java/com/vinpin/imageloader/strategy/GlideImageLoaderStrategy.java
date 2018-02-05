@@ -67,17 +67,31 @@ public class GlideImageLoaderStrategy implements ImageLoaderStrategy {
     private RequestOptions getRequestOptions(@NonNull ImageLoaderOptions options) {
         RequestOptions requestOptions = new RequestOptions();
         // 设置加载占位图
-        if (options.getPlaceholderResId() > 0) {
-            requestOptions.placeholder(options.getPlaceholderResId());
+        if (options.getPlaceholderDrawable() != null) {
+            requestOptions.placeholder(options.getPlaceholderDrawable());
+        }
+        if (options.getPlaceholderId() > 0) {
+            requestOptions.placeholder(options.getPlaceholderId());
         }
         // 设置加载失败图
-        if (options.getErrorResId() > 0) {
-            requestOptions.error(options.getErrorResId());
+        if (options.getErrorPlaceholder() != null) {
+            requestOptions.error(options.getErrorPlaceholder());
+        }
+        if (options.getErrorId() > 0) {
+            requestOptions.error(options.getErrorId());
+        }
+        // 设置后备回调符
+        if (options.getFallbackDrawable() != null) {
+            requestOptions.fallback(options.getFallbackDrawable());
+        }
+        if (options.getFallbackId() > 0) {
+            requestOptions.fallback(options.getFallbackId());
         }
         // 设置图片加载的分辨
         if (options.getOverrideWidth() > 0 && options.getOverrideHeight() > 0) {
             requestOptions.override(options.getOverrideWidth(), options.getOverrideHeight());
         }
+        setTransformation(requestOptions, options);
         // 设置禁用内存缓存功能
         if (options.isSkipMemoryCache()) {
             requestOptions.skipMemoryCache(true);
@@ -88,6 +102,22 @@ public class GlideImageLoaderStrategy implements ImageLoaderStrategy {
             requestOptions.diskCacheStrategy(strategy);
         }
         return requestOptions;
+    }
+
+    @SuppressLint("CheckResult")
+    private void setTransformation(@NonNull RequestOptions requestOptions, @NonNull ImageLoaderOptions options) {
+        if (options.isCenterCrop()) {
+            requestOptions.centerCrop();
+        }
+        if (options.isFitCenter()) {
+            requestOptions.fitCenter();
+        }
+        if (options.isCircleCrop()) {
+            requestOptions.circleCrop();
+        }
+        if (options.isCenterInside()) {
+            requestOptions.centerInside();
+        }
     }
 
     @NonNull
