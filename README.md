@@ -68,8 +68,8 @@ ImageLoader.with(context)
 ```
 ImageLoader.with(context)
   .url(url)
-  .asBitmap()
-  .into(imageView);
+  .asBitmap() // 作为静态图展示
+  .into(imageView);
 ```
 设置加载图片的分辨率
 ```
@@ -84,8 +84,8 @@ ImageLoader.with(context)
   .url(url)
   .centerCrop()
   .fitCenter()
-  .circleCrop()
-  .centerInside()
+  .circleCrop() // 圆形图
+  .centerInside()
   .into(imageView);
 ```
 设置禁用内存缓存功能，默认false 开启内存缓存功能
