@@ -7,7 +7,10 @@ compile 'com.vinpin:imageloader:1.0.1'
 
 基于Glide的二次封装，内部依赖了Glide的4.5.0版本。
 # 开始使用
-采用策略设计模式来扩展Glide，使用建造者设计模式来构建请求选项。
+采用策略设计模式来扩展Glide，使用建造者设计模式来构建请求选项。基础使用结构，保留原汁原味的链式调用，使用起来就是舒畅。
+```
+ImageLoader.with(context).url(url).into(imageView);
+```
 
 如果场景需要，在Application中
 
@@ -27,16 +30,11 @@ public class MyApplication extends Application {
         // 如果场景需要
         ImageLoader.onLowMemory(this);
     }
-	...
+    ...
 }
 ```
 
-**一. 基础使用结构，保留原汁原味的链式调用，使用起来就是舒畅**
-```
-ImageLoader.with(context).url(url).into(imageView);
-```
-
-加载图片，本地、网络、文件、bitmap、drawable等图片
+**一. 加载本地、网络、文件、bitmap、drawable等图片**
 ```
 ImageLoader.with(context)
   .resourceId(resId)
@@ -46,9 +44,9 @@ ImageLoader.with(context)
   .drawable(drawable)
   .into(imageView);
 ```
+
 **二. 占位符、错误符、后备回调符**
 ```
-// 占位符
 ImageLoader.with(context)
   .url(url)
   .placeholder(R.drawable.placeholder)
