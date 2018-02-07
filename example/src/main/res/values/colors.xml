@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#212121</color>
+    <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="background">#303030</color>
+    <color name="btn_bg">#5A595B</color>
+    <color name="white">#FDFDFD</color>
+    <color name="white_B7B7B7">#B7B7B7</color>
+
+    <color name="textcolor">#000000</color>
+    <color name="space_line">#F0F0F4</color>
+
 </resources>

@@ -1,68 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@color/background">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginTop="20dp"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/txt_url"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="30dp"
-        android:background="@color/colorAccent"
-        android:gravity="center"
-        android:text="加载网络图片"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="ImageLoader"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
 
-    <TextView
-        android:id="@+id/txt_resid"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="30dp"
-        android:background="@color/colorAccent"
-        android:gravity="center"
-        android:text="加载本地资源图片"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="基础使用"
+            android:textColor="@color/white_B7B7B7"
+            android:textSize="14dp" />
 
-    <TextView
-        android:id="@+id/txt_circle"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="30dp"
-        android:background="@color/colorAccent"
-        android:gravity="center"
-        android:text="加载圆形图片"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp" />
+        <TextView
+            android:id="@+id/txt_load_image"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/btn_bg"
+            android:gravity="center"
+            android:text="加载图片"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
 
-    <TextView
-        android:id="@+id/txt_reset"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="30dp"
-        android:background="@color/colorAccent"
-        android:gravity="center"
-        android:text="清除所有缓存"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp" />
+        <!--进阶使用-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="进阶使用"
+            android:textColor="@color/white_B7B7B7"
+            android:textSize="14dp" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/txt_loadimage_advanced"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/btn_bg"
+            android:gravity="center"
+            android:text="加载图片进阶"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <!--清除缓存-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:text="清除缓存"
+            android:textColor="@color/white_B7B7B7"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/txt_clear_memory"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/btn_bg"
+            android:gravity="center"
+            android:text="清除内存缓存"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/txt_clear_disk"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/btn_bg"
+            android:gravity="center"
+            android:text="清除磁盘缓存"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</ScrollView>

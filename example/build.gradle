@@ -28,6 +28,8 @@ dependencies {
     implementation project(":image-loader")
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
+    implementation "com.android.support:recyclerview-v7:${rootProject.ext.supportLibVersion}"
+    implementation 'com.vinpin:baseadapter:1.0.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
