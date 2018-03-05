@@ -54,6 +54,8 @@ public class GlideImageLoaderStrategy implements ImageLoaderStrategy {
             requestBuilder.load(options.getDrawable());
         } else if (options.getResourceId() > 0) {
             requestBuilder.load(options.getResourceId());
+        } else {
+            requestBuilder.load((String) null);
         }
         // 设置缩略图缩放倍数
         if (options.getThumbSizeMultiplier() > 0) {
