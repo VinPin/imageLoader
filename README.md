@@ -2,7 +2,7 @@
 Android 网络图片加载封装库
 # 添加依赖
 ```
-compile 'com.vinpin:imageloader:1.0.1'
+compile 'com.vinpin:imageloader:1.0.2'
 ```
 
 基于Glide的二次封装，内部依赖了Glide的4.5.0版本。
