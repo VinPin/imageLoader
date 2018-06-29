@@ -2,10 +2,10 @@
 Android 网络图片加载封装库
 # 添加依赖
 ```
-compile 'com.vinpin:imageloader:1.0.2'
+compile 'com.vinpin:imageloader:1.0.3'
 ```
 
-基于Glide的二次封装，内部依赖了Glide的4.5.0版本。
+基于Glide的二次封装，内部依赖了Glide的4.7.1版本。
 # 开始使用
 采用策略设计模式来扩展Glide，使用建造者设计模式来构建请求选项。基础使用结构，保留原汁原味的链式调用，使用起来就是舒畅。
 ```
@@ -109,7 +109,7 @@ ImageLoader.with(context)
 ```
 
 # 混淆配置
-由于目前只基于Glide4.5.0的封装，需要添加Glide的混淆配置
+由于目前只基于Glide的封装，需要添加Glide的混淆配置
 ```
 -keep public class * implements com.bumptech.glide.module.GlideModule
 -keep public class * extends com.bumptech.glide.module.AppGlideModule
