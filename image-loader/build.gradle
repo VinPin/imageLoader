@@ -43,7 +43,7 @@ publish {
     userOrg = 'vinpin'
     groupId = 'com.vinpin'
     artifactId = 'imageloader'
-    publishVersion = '1.0.3'
+    publishVersion = '1.1.0'
     desc = 'Android network image loading package.'
     website = 'https://github.com/VinPin/imageLoader'
 }
