@@ -86,6 +86,8 @@ ImageLoader.with(context)
   .fitCenter()
   .circleCrop() // 圆形图
   .centerInside()
+  .blur(25,3)
+  .roundedCorners(50)
   .into(imageView);
 ```
 设置禁用内存缓存功能，默认false 开启内存缓存功能
