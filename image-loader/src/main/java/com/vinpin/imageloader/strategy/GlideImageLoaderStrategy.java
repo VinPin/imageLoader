@@ -15,11 +15,14 @@ import com.bumptech.glide.request.RequestOptions;
 import com.vinpin.imageloader.engine.DiskCacheType;
 import com.vinpin.imageloader.engine.ImageLoaderOptions;
 
+import jp.wasabeef.glide.transformations.BlurTransformation;
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+
 /**
  * Glide加载图片策略实现类
  *
  * @author vinpin
- *         create at 2018/01/29 16:39
+ * create at 2018/01/29 16:39
  */
 public class GlideImageLoaderStrategy implements ImageLoaderStrategy {
 
@@ -119,6 +122,12 @@ public class GlideImageLoaderStrategy implements ImageLoaderStrategy {
         }
         if (options.isCenterInside()) {
             requestOptions.centerInside();
+        }
+        if (options.getBlurRadius() > 0) {
+            requestOptions.transform(new BlurTransformation(options.getBlurRadius(), options.getBlurSampling()));
+        }
+        if (options.getRoundedCornersRadius() > 0) {
+            requestOptions.transform(new RoundedCornersTransformation(options.getRoundedCornersRadius(), 0));
         }
     }
 

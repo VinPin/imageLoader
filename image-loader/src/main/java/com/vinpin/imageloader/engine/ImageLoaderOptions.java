@@ -16,7 +16,7 @@ import java.io.File;
  * 图片请求选项类
  *
  * @author vinpin
- *         create at 2018/01/29 16:19
+ * create at 2018/01/29 16:19
  */
 @SuppressWarnings("unused")
 public class ImageLoaderOptions {
@@ -43,10 +43,15 @@ public class ImageLoaderOptions {
     private int fallbackId;
     private int overrideWidth;
     private int overrideHeight;
+
     private boolean centerCrop;
     private boolean fitCenter;
     private boolean circleCrop;
     private boolean centerInside;
+    private int blurRadius;
+    private int blurSampling;
+    private int roundedCornersRadius;
+
     private boolean skipMemoryCache;
     private int diskCacheType;
 
@@ -70,10 +75,15 @@ public class ImageLoaderOptions {
         this.fallbackId = builder.fallbackId;
         this.overrideWidth = builder.overrideWidth;
         this.overrideHeight = builder.overrideHeight;
+
         this.centerCrop = builder.centerCrop;
         this.fitCenter = builder.fitCenter;
         this.circleCrop = builder.circleCrop;
         this.centerInside = builder.centerInside;
+        this.blurRadius = builder.blurRadius;
+        this.blurSampling = builder.blurSampling;
+        this.roundedCornersRadius = builder.roundedCornersRadius;
+
         this.skipMemoryCache = builder.skipMemoryCache;
         this.diskCacheType = builder.diskCacheType;
 
@@ -163,6 +173,18 @@ public class ImageLoaderOptions {
         return centerInside;
     }
 
+    public int getBlurRadius() {
+        return blurRadius;
+    }
+
+    public int getBlurSampling() {
+        return blurSampling;
+    }
+
+    public int getRoundedCornersRadius() {
+        return roundedCornersRadius;
+    }
+
     public boolean isSkipMemoryCache() {
         return skipMemoryCache;
     }
@@ -179,9 +201,6 @@ public class ImageLoaderOptions {
         ImageLoader.getActualImageLoader().request(this);
     }
 
-    /**
-     * 建造者模式
-     */
     public static class OptionBuilder {
 
         private Context context;
@@ -205,10 +224,15 @@ public class ImageLoaderOptions {
         private int fallbackId;
         private int overrideWidth;
         private int overrideHeight;
+
         private boolean centerCrop;
         private boolean fitCenter;
         private boolean circleCrop;
         private boolean centerInside;
+        private int blurRadius;
+        private int blurSampling;
+        private int roundedCornersRadius;
+
         private boolean skipMemoryCache = false;
         private int diskCacheType = DiskCacheType.AUTOMATIC;
 
@@ -410,6 +434,34 @@ public class ImageLoaderOptions {
          */
         public OptionBuilder centerInside() {
             this.centerInside = true;
+            return this;
+        }
+
+        /**
+         * 高斯模糊
+         *
+         * @param radius   模糊度,取值[1,50]
+         * @param sampling 缩放倍数,默认1
+         * @return This option builder.
+         */
+        public OptionBuilder blur(int radius, int sampling) {
+            if (radius > 0) {
+                this.blurRadius = radius;
+            }
+            this.blurSampling = sampling <= 1 ? 1 : sampling;
+            return this;
+        }
+
+        /**
+         * 圆角
+         *
+         * @param radius 圆角半径，像素
+         * @return This option builder.
+         */
+        public OptionBuilder roundedCorners(int radius) {
+            if (radius > 0) {
+                this.roundedCornersRadius = radius;
+            }
             return this;
         }
 
