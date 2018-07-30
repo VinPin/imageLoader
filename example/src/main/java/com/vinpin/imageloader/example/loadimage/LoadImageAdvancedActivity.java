@@ -24,7 +24,7 @@ import java.util.ArrayList;
  * 进阶使用之加载图片界面
  *
  * @author vinpin
- *         create at 2018/02/06 10:10
+ * create at 2018/02/06 10:10
  */
 public class LoadImageAdvancedActivity extends AppCompatActivity {
 
@@ -53,7 +53,7 @@ public class LoadImageAdvancedActivity extends AppCompatActivity {
         if (!mInfos.isEmpty()) {
             mInfos.clear();
         }
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 8; i++) {
             LoadImageInfo info = new LoadImageInfo();
             info.type = i;
             mInfos.add(info);
@@ -124,7 +124,21 @@ public class LoadImageAdvancedActivity extends AppCompatActivity {
                                     .url(ImageConfig.url1)
                                     .circleCrop()
                                     .into(imageView);
-                            txtTitle.setText("变换之圆形图");
+                            txtTitle.setText("变换之circleCrop");
+                            break;
+                        case 6:
+                            ImageLoader.with(LoadImageAdvancedActivity.this)
+                                    .url(ImageConfig.url1)
+                                    .blur(25, 5)
+                                    .into(imageView);
+                            txtTitle.setText("变换之高斯模糊");
+                            break;
+                        case 7:
+                            ImageLoader.with(LoadImageAdvancedActivity.this)
+                                    .url(ImageConfig.url1)
+                                    .roundedCorners(50)
+                                    .into(imageView);
+                            txtTitle.setText("变换之圆角");
                             break;
                         default:
                             break;
