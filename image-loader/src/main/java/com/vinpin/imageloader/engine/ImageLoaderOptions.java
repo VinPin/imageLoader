@@ -3,9 +3,9 @@ package com.vinpin.imageloader.engine;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.Nullable;
-import android.support.annotation.RawRes;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.Nullable;
+import androidx.annotation.RawRes;
 import android.view.View;
 
 import com.vinpin.imageloader.ImageLoader;
