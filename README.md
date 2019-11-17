@@ -2,6 +2,9 @@
 Android 网络图片加载封装库
 # 添加依赖
 ```
+// 支持androidx
+compile 'com.vinpin:imageloader:2.0.0'
+// 不支持androidx
 compile 'com.vinpin:imageloader:1.0.3'
 ```
 
